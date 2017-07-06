@@ -8,7 +8,7 @@ const GifList = (props) => {
   // App (the parent component) will pass all the data GifList needs via props
   //
   const gifItems = props.gifs.map((image) => {
-    return <GifItem key={image.id} gif={image} />
+    return <GifItem key={image.id} gif={image} onGifSelect={props.onGifSelect} />
   // this function loops through the array of gifs passed down from state
   // for each gif, render a GifItem component
   // on each GifItem we also set a key
