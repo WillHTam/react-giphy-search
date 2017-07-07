@@ -1,7 +1,7 @@
 // Comments refer to the line above.
 
 import React from 'react'
-// import is like require.
+// import is es6 version of require.
 import ReactDOM from 'react-dom'
 import GifList from './components/GifList'
 import GifModal from './components/GifModal'
@@ -19,10 +19,6 @@ class App extends React.Component {
       selectedGif: null,
       modalIsOpen: false
     }
-
-    // this.handleTermChange = this.handleTermChange.bind(this)
-    // this sets the 'this' of handleTermChange to App and not onTermChange
-    // but we can also solve this problem by changing the handleTermChange to a fat arrow function and thus not introduce its own this, but t
   }
 
   openModal = (gif) => {
@@ -39,6 +35,10 @@ class App extends React.Component {
       })
   }
 
+  // this.handleTermChange = this.handleTermChange.bind(this)
+  // this sets the 'this' of handleTermChange to App and not onTermChange
+  // but we can also solve this problem by changing the handleTermChange to a fat arrow function and thus not introduce its own this
+  // or do it in the handler below (line 60)
   handleTermChange(term) {
     console.log(term)
 
@@ -54,6 +54,7 @@ class App extends React.Component {
     // > Since this.setState is being called on onTermChange, but onTermChange did not inherit from React.Component it doesn't work because it didn't inherit R.C's methods.
   }
 
+// SearchBar can use the prop onTermChange because it was set here
   render () {
     return (
       <div>
