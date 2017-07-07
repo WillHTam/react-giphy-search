@@ -3,15 +3,14 @@
 import React from 'react'
 // import is like require.
 import ReactDOM from 'react-dom'
-import SearchBar from './components/SearchBar'
 import GifList from './components/GifList'
 import GifModal from './components/GifModal'
+import SearchBar from './components/SearchBar'
 import request from 'superagent'
 import './styles/app.css'
 
 class App extends React.Component {
   // Creating an App Component that will serve as the parent for the rest of our application
-
   constructor () {
     super()
 
@@ -40,7 +39,7 @@ class App extends React.Component {
       })
   }
 
-  handleTermChange = (term) => {
+  handleTermChange(term) {
     console.log(term)
 
     const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC`
@@ -58,9 +57,9 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <SearchBar onTermChange={term => this.handleTermChange} />
+        <SearchBar onTermChange={term => this.handleTermChange(term)} />
         <GifList gifs={this.state.gifs}
-                 onGifSelect{selectedGif => this.openModal(selectedGif)}/>
+                 onGifSelect={selectedGif => this.openModal(selectedGif)}/>
         <GifModal modalIsOpen={this.state.modalIsOpen}
                   selectedGif={this.state.selectedGif}
                   onRequestClose={ () => this.closeModal() } />
